@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import login
 from .models import Task
-from .serializers import TaskSerializer  # You'll need to create this
+from .serializers import TaskSerializer  
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -16,8 +16,13 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from .models import Task
+from django.shortcuts import get_object_or_404
 
-# Task Views (Web Interface)
+def task_detail(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'tasks/task_detail.html', {'task': task})
+
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'tasks/home.html'
@@ -34,7 +39,7 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/task_form.html'
-    fields = ['title', 'description', 'completed']
+    fields = ['title', 'description', 'priority', 'due_date', 'completed']
     success_url = reverse_lazy('task-list')
 
     def form_valid(self, form):
@@ -44,7 +49,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = 'tasks/task_form.html'
-    fields = ['title', 'description', 'completed']
+    fields = ['title', 'description', 'priority', 'due_date', 'completed']
     success_url = reverse_lazy('task-list')
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):

@@ -1,0 +1,339 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.box-shadow-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.navbar-custom .btn-primary {
+    background-color: #00b6fe;
+    border: none;
+}
+
+.navbar-custom .btn-primary:hover {
+    background-color: #00aaff;
+}
+
+.navbar-custom {
+    background-color: #007bff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* This allows wrapping to the next line if necessary */
+    gap: 15px; /* Adds space between the buttons */
+    padding: 10px;
+}
+
+.navbar-custom h1 {
+    color: #fff;
+    font-size: 28px;
+}
+
+.navbar-custom .btn {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Task List */
+.task-list .list-group-item {
+    background-color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.priority-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.priority-low {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.priority-medium {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.priority-high {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.task-title {
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.task-title:hover {
+    color: #0056b3;
+}
+
+.task-item small {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.no-task {
+    font-size: 18px;
+    color: #888;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark-mode .box-shadow-container {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .navbar-custom {
+    background-color: #333;
+}
+
+body.dark-mode h1,
+body.dark-mode .task-title,
+body.dark-mode .task-item small,
+body.dark-mode .priority-badge,
+body.dark-mode .no-task {
+    color: #fff;
+}
+
+body.dark-mode .task-list .list-group-item {
+    background-color: #333;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .task-title:hover {
+    color: #4f8fff;
+}
+
+body.dark-mode .priority-low {
+    background-color: #4caf50;
+}
+
+body.dark-mode .priority-medium {
+    background-color: #ff9800;
+}
+
+body.dark-mode .priority-high {
+    background-color: #f44336;
+}
+
+body.dark-mode .btn-outline-danger {
+    color: #f44336;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+    background-color: #f44336;
+    color: #fff;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.dark-mode-button:hover {
+    transform: scale(1.1);
+}
+
+.icon {
+    display: none;
+}
+
+body:not(.dark-mode) .sun {
+    display: inline-block;
+}
+
+body.dark-mode .moon {
+    display: inline-block;
+}
+
+.sun, .moon {
+    font-size: 24px;
+    color: #f5f5f5;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .sun {
+    color: #ffd700;
+}
+
+body:not(.dark-mode) .moon {
+    color: #f0f0f0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        padding-top: 10px;
+    }
+
+    .box-shadow-container {
+        padding: 20px;
+    }
+
+    .navbar-custom {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .navbar-custom h1 {
+        font-size: 24px;
+    }
+
+    .task-item {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .task-title {
+        font-size: 18px;
+    }
+
+    .task-list .list-group-item {
+        padding: 12px;
+    }
+
+    .priority-badge {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px;
+        background-color: #00bbff;
+    }
+}
+
+/* Adjustments for screen widths below 768px */
+@media (max-width: 768px) {
+    .navbar-custom {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+
+    .navbar-custom h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .task-item {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .task-title {
+        font-size: 16px;
+    }
+
+    .task-list .list-group-item {
+        padding: 12px;
+    }
+
+    .priority-badge {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 8px;
+        background-color: #00bbff;
+        margin: 5px; /* Space between buttons */
+    }
+}
+
+/* Adjustments for screen widths below 480px */
+@media (max-width: 480px) {
+    .navbar-custom {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+
+    .navbar-custom h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .task-item {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .task-title {
+        font-size: 14px;
+    }
+
+    .task-list .list-group-item {
+        padding: 10px;
+    }
+
+    .priority-badge {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 6px;
+        background-color: #00bbff;
+        margin: 5px; /* Space between buttons */
+    }
+}

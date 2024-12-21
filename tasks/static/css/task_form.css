@@ -1,0 +1,139 @@
+/* Base Styling */
+body {
+    background-color: #f4f7fc;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.task-form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+}
+
+/* Form Box */
+.form-box {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .form-box {
+    background-color: #333333;
+}
+
+/* Form Title */
+.form-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Form Input */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode .form-control {
+    background-color: #444444;
+    border-color: #666666;
+    color: white;
+}
+
+.form-control:focus {
+    border-color: #5cb85c;
+    box-shadow: 0 0 0 0.2rem rgba(28, 140, 28, 0.25);
+}
+
+/* Buttons */
+.submit-btn,
+.cancel-btn {
+    width: 48%;
+    margin-top: 1rem;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Dark Mode Button */
+.dark-mode-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.dark-mode-button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+body.dark-mode .dark-mode-button {
+    color: #ffffff;
+}
+
+/* Sun and Moon Icons */
+.sun, .moon {
+    display: inline-block;
+}
+
+body.dark-mode .sun {
+    display: none;
+}
+
+body.dark-mode .moon {
+    display: inline-block;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 767px) {
+    .task-form-container {
+        padding: 1rem;
+    }
+
+    .form-box {
+        padding: 1.5rem;
+    }
+
+    .submit-btn, .cancel-btn {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+#due_date {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+

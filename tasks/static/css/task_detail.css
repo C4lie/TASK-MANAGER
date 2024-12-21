@@ -1,0 +1,116 @@
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #181818;
+    color: #f4f4f4;
+}
+
+.navbar-custom.dark-mode {
+    background-color: #121212;
+}
+
+.task-detail-box.dark-mode {
+    background-color: #212121;
+    border: 1px solid #333;
+}
+
+.dark-mode .btn {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+/* Light Mode Styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar-custom {
+    background-color: #007bff;
+}
+
+.task-detail-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.task-description {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
+.priority-low {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.priority-medium {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.priority-high {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.due-date {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.task-actions {
+    margin-top: 20px;
+}
+
+.dark-mode-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 1000;
+}
+
+.sun {
+    display: block;
+}
+
+.moon {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .task-detail-box {
+        padding: 15px;
+    }
+
+    .task-title {
+        font-size: 1.2em;
+    }
+
+    .task-description {
+        font-size: 1em;
+    }
+
+    .priority-badge {
+        font-size: 0.9em;
+    }
+}

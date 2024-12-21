@@ -8,97 +8,67 @@
     <title>{% if form.instance.pk %}Edit Task{% else %}New Task{% endif %}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static 'css/task_form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common_styles.css' %}">
 </head>
 <body>
-    <div class="container mt-4">
-        <h1>{% if form.instance.pk %}Edit Task{% else %}New Task{% endif %}</h1>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" class="form-control" required 
-                       {% if form.title.value %}value="{{ form.title.value }}"{% endif %}>
-            </div>
 
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control" rows="3">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="priority">Priority</label>
-                <select name="priority" id="priority" class="form-control">
-                    <option value="low" {% if form.priority.value == 'low' %}selected{% endif %}>Low</option>
-                    <option value="medium" {% if form.priority.value == 'medium' %}selected{% endif %}>Medium</option>
-                    <option value="high" {% if form.priority.value == 'high' %}selected{% endif %}>High</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="due_date">Due Date</label>
-                <input type="text" name="due_date" id="due_date" 
-                       class="form-control datetimepicker" 
-                       {% if form.due_date.value %}value="{{ form.due_date.value|date:'Y-m-d H:i' }}"{% endif %}
-                       placeholder="Select due date and time" required>
-            </div>
-
-            <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="completed" id="completed" 
-                           class="custom-control-input"
-                           {% if form.completed.value %}checked{% endif %}>
-                    <label class="custom-control-label" for="completed">Completed</label>
+    <div class="container mt-4 task-form-container">
+        <div class="form-box">
+            <h1 class="form-title">{% if form.instance.pk %}Edit Task{% else %}New Task{% endif %}</h1>
+            
+            <form method="post" class="task-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" required 
+                        {% if form.title.value %}value="{{ form.title.value }}"{% endif %}>
                 </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{% url 'task-list' %}" class="btn btn-secondary">Cancel</a>
-        </form>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" class="form-control" rows="3">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority" class="form-control">
+                        <option value="low" {% if form.priority.value == 'low' %}selected{% endif %}>Low</option>
+                        <option value="medium" {% if form.priority.value == 'medium' %}selected{% endif %}>Medium</option>
+                        <option value="high" {% if form.priority.value == 'high' %}selected{% endif %}>High</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="due_date">Due Date</label>
+                    <input type="date" class="form-control" id="due_date" name="due_date" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="completed" id="completed" 
+                            class="custom-control-input"
+                            {% if form.completed.value %}checked{% endif %}>
+                        <label class="custom-control-label" for="completed">Completed</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Save</button>
+                <a href="{% url 'task-list' %}" class="btn btn-secondary cancel-btn">Cancel</a>
+            </form>
+        </div>
+        <!-- Dark Mode Toggle Button -->
+        <!-- <button class="dark-mode-button">
+            <span class="sun">🌞</span>
+            <span class="moon">🌙</span>
+        </button> -->
     </div>
 
-    <style>
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .priority-high {
-            color: #dc3545;
-        }
-        .priority-medium {
-            color: #ffc107;
-        }
-        .priority-low {
-            color: #28a745;
-        }
-        select option[value="high"] {
-            background-color: #ffebee;
-        }
-        select option[value="medium"] {
-            background-color: #fff3e0;
-        }
-        select option[value="low"] {
-            background-color: #e8f5e9;
-        }
-    </style>
-
+    <!-- Add Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr(".datetimepicker", {
-                enableTime: true,
-                dateFormat: "Y-m-d H:i",
-                minDate: "today",
-                time_24hr: true
-            });
 
-            const prioritySelect = document.getElementById('priority');
-            prioritySelect.addEventListener('change', function() {
-                this.className = 'form-control priority-' + this.value;
-            });
-        });
-    </script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

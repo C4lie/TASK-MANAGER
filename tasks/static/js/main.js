@@ -70,4 +70,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-        
+// Dark Mode Toggle Functionality
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+// Function to toggle dark mode
+const toggleDarkMode = () => {
+    body.classList.toggle('dark-mode');
+
+    // Save the user's preference in localStorage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('dark-mode', 'enabled');
+    } else {
+        localStorage.removeItem('dark-mode');
+    }
+};
+
+// Check if dark mode is enabled in localStorage on page load
+if (localStorage.getItem('dark-mode') === 'enabled') {
+    body.classList.add('dark-mode');
+}
+
+// Add an event listener for the dark mode toggle button
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+
+     
