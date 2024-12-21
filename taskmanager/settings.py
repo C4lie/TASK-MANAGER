@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tasks', 
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,7 @@ WSGI_APPLICATION = 'taskmanager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
