@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponseRedirect
-from tasks.views import home
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('tasks.urls')),  # API routes
-    
-    path('', home),  # Home page route
+    path('', include('tasks.urls')),  # Include your tasks app URLs
 ]
+
+# Add these lines to serve static files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
