@@ -129,6 +129,27 @@ body.dark-mode .moon {
         margin-top: 1rem;
     }
 }
+
+/* Additional Responsive Adjustments */
+@media (max-width: 480px) {
+    .form-title {
+        font-size: 1.5rem; /* Adjust title size for smaller screens */
+    }
+
+    .form-control {
+        font-size: 0.9rem; /* Smaller input text size */
+    }
+
+    .submit-btn, .cancel-btn {
+        padding: 8px 10px; /* Smaller button padding */
+        font-size: 0.9rem; /* Smaller button text size */
+    }
+
+    .dark-mode-button {
+        font-size: 1.2rem; /* Smaller dark mode button size */
+    }
+}
+
 #due_date {
     border-radius: 5px;
     padding: 10px;
@@ -136,4 +157,3 @@ body.dark-mode .moon {
     border: 1px solid #ccc;
     width: 100%;
 }
-
